@@ -8,36 +8,33 @@ import matplotlib.pyplot as plt
 # Carga datos: ya vienen divididos en entrenamiento y prueba
 (x_train, targets), (test_inputs, test_targets) = mnist.load_data()
 
-
-# Mostrar la primera imagen del conjunto de entrenamiento
-# print()
-# plt.imshow(x_train[0], cmap='gray')
-# plt.title(f"Etiqueta: {targets[0]}")
-# plt.axis('off')
-# plt.show()
-
-
-print(x_train.shape)  # (60000, 28, 28)
-print(targets.shape)  # (60000,)
-# print(x_train[0])
-
+# Datos para el entrenamiento de la red Neuronal
 x_train = x_train/255
-test_inputs = test_inputs/255
-
 x_train = x_train.reshape(-1, 784)
-test_inputs = test_inputs.reshape(-1, 784)
-# print(x_train[0])
+
 test_show = test_targets
 targets = to_categorical(targets, num_classes=10)
+
+#Datos para prueba
+test_inputs = test_inputs.reshape(-1, 784)
+test_inputs = test_inputs/255
+
 test_targets = to_categorical(test_targets, num_classes=10)
 
+# Inicializacion de la red Neuronal
+rn = CBNN(x_train = x_train, targets= targets, n_iter = 100, n_hidden = 20, lr = 0.01)
 
-print(x_train.shape)
+# Entrenamiento de la red Neuronal
+rn.training(batch_size= 32)
 
-rn = CBNN(x_train, targets, 1000, 100, 20, 0.01)
+# Mostrar las primeras 10 imagenes del set de imagenes de mnist
+# for i in range(10):
+#     plt.imshow(test_inputs[i], cmap='gray')
+#     plt.title(f"Etiqueta: {test_targets[i]}")
+#     plt.axis('off')
+#     plt.show()
 
-rn.training()
-
+# Realiza la predicion de los datos de testeo
 print('Predictions:')
 prediction = rn.predict(np.array(test_inputs))
 
