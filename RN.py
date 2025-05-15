@@ -95,7 +95,7 @@ class CBNN:
 
         return act2
 
-    def training(self, batch_size = 0):
+    def training(self, batch_size = 1):
         n_samples = self.x_train.shape[0]
         
         for i in range(self.n_iter):
