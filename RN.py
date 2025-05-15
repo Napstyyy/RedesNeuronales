@@ -35,11 +35,11 @@ class CBNN:
 
         # 
         self.ws1 = np.random.randn(n_hidden, input_size) * np.sqrt(2. / input_size)
-        print(self.ws1)
+        
         self.bs1 = np.zeros([1, n_hidden])
 
         self.ws2 = np.random.randn(output_size, n_hidden) * np.sqrt(2. / n_hidden)
-        print(self.ws2)
+        
         self.bs2 = np.zeros([1, output_size])
         
 
