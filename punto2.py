@@ -39,6 +39,6 @@ print('Predictions:')
 prediction = rn.predict(np.array(test_inputs))
 
 print(f'targets        prediction')
-for i in range(len(test_targets)):
+for i in range(20):
     indice = np.argmax(prediction[i])
     print(f'{test_show[i]}:    {indice}') 
