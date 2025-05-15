@@ -32,9 +32,9 @@ targets = [ purple, orange, purple, orange, green,  purple,
             purple, purple, green,  orange, green,  green, 
             purple, purple, green,  purple, green,  green]
 
-rn = CBNN(x_train = x_train, targets = targets, n_iter = 20000, n_hidden = 10, lr = 0.01)
+rn = CBNN(x_train = x_train, targets = targets, n_iter = 1000, n_hidden = 10, lr = 0.01)
 
-rn.training(batch_size=0)
+rn.training(batch_size=1)
 
 test_inputs = [ (0.0000, 0.3929), (0.0645, 0.5714), (0.0968, 0.3214),
                 (0.0968, 0.5000), (0.2581, 0.3214), (0.1935, 0.4643), 
